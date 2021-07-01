@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html ng-app="myFirstApp">
+<html ng-app="LunchCheck">
     <head>
         <meta charset="utf-8">
         <script src="angular.min.js"></script>
         <script src="app.js"></script>
-        <title>My First AngularJS App</title>
+        <style> body{font-size: 1.2em;}</style>
+        <title>Lunch Checker</title>
     </head>
-<body>
-<h1>My First Angular Js app</h1>
-<div ng-controller="MyFirstController">
-{{sayHello()}}
+<body ng-app="LunchCheck">
+<h1>Lunch Checker</h1>
+<div ng-controller='LunchCheckController'>
+   Enter items:<br>
+   <input type="text"
+   ng-model="name"
+    ng-keyup="displayMsg();">
+    <div>
+        <button ng-click="Check()">Check If Too Much</button>
+   <br>
+    </div>
+    <div>Final answer message is :{{finalMsg}}</div>
 </div>
 
 </body>
 </html>
+
