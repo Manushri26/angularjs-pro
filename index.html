@@ -10,15 +10,15 @@
 <body ng-app="LunchCheck">
 <h1>Lunch Checker</h1>
 <div ng-controller='LunchCheckController'>
-   Enter items:<br>
+   Enter items for lunch:<br>
    <input type="text"
-   ng-model="name"
-    ng-keyup="displayMsg();">
+   ng-model="name">
     <div>
         <button ng-click="Check()">Check If Too Much</button>
    <br>
     </div>
-    <div>Final answer message is :{{finalMsg}}</div>
+    <div>
+        <br>Final answer message is :{{finalMsg}}</div>
 </div>
 
 </body>
