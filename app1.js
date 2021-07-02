@@ -4,12 +4,15 @@
     angular.module('MsgApp',[])
     .controller('MsgController',MsgController)
     .filter('love',LovesFilter);
-    MsgController.$inject=['$scope','lovesFilter'];
+    MsgController.$inject=['$scope','loveFilter'];
     
-    function MsgController($scope,lovesFilter)
+    function MsgController($scope,loveFilter)
     {
     
+        $scope.name="Manushri";
+        
         $scope.stateOfBeing="1";
+        $scope.cookieCost=5;
         
        $scope.sayMessage=function(){
            var msg="i like to see flowers";
@@ -18,7 +21,7 @@
 
        $scope.sayLovesMessage=function(){
             var msg="i like to see flowers";
-            msg=lovesFilter(msg);
+            msg=loveFilter(msg);
             return msg;
         };
 
@@ -29,11 +32,10 @@
     }
     function LovesFilter(){
         return function(input){
-            input=input||"";
+            input=input || "";
             input=input.replace("like","love");
             return input;
         };
     }
    
-}
-) ();
+}) ();
