@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="MsgApp">
+    <head>
+        <meta charset="utf-8">
+        <script src="angular.min.js"></script>
+        <script src="app1.js"></script>
+        <style> body{font-size: 1.2em;}</style>
+        <title>MsgController Custom filters</title>
+    </head>
+<body >
+<h1>custom Filters</h1>
+<div ng-controller='MsgController'>
+   
+  
+   Origianal: {{sayMessage()}}<br>
+   LOve = {{sayLovesMessage()}}
+
+    <div>
+        <button ng-click="feedME()">Feed photo</button>
+   <br>
+    
+ 
+        <br><img ng-src="images/im{{stateOfBeing}}.jpg">
+    </div>
+</div>
+
+</body>
+</html>
+
