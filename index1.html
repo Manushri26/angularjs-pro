@@ -13,8 +13,9 @@
    
   {{name}} has a message for u: <br>
    Origianal: {{sayMessage()}}<br>
-   LOve = {{sayLovesMessage()}}
-
+   LOve = {{sayLovesMessage()}}<br>
+    Truth= {{sayLovesMessage() | truth : 'see': 'buy'}}<br>
+    Big Truth= {{sayLovesMessage() | truth : 'see': 'buy'| uppercase}}
     <div>
         <button ng-click="feedME()">Feed photo</button>
    <br>
