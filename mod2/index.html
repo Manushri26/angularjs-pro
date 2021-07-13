@@ -2,124 +2,39 @@
 <html ng-app='ShoppingListCheckOff'>
     <head>
         <meta charset="utf-8">
-        <script src="mod2/angular.min.js"></script>
-        <script src="mod2/app.js"></script>
+        <script src="angular.min.js"></script>
+        <script src="app.js"></script>
         <style>body {font-size: 1.2em;}</style>
         <title>ShoppingListCheckOff</title>
     </head>
     <body>
         <h1>ShoppingListCheckOff</h1>
-        <div id='ToBuy' ng-controller='ToBuyController as ToBuy'>
-        <h3>TO BUY</h3>
-        <input type="text" ng-model="ToBuy.itemName" placeholder="item name">      
-        <input type="text" ng-model="ToBuy.itemQuantity" placeholder="quantity">
-        <button ng-click="ToBuy.addItem()">Add Item to ToBuy list</button>
+        <div ng-controller='ToBuyController as Buy'>
+        <h3>TO BUY LIST</h3>
         <ol>
-            <li ng-repeat="item in ToBuy.items">
-                {{item.quantity}} of {{item.name}}
-                <button ng-click="ToBuy.removeItem($index);"> Remove Item</button>
+            <li ng-repeat="item in Buy.items">
+                buy {{item.itemQuantity}} of {{item.itemName}}
+                <button ng-click="Buy.buyItem($index);"> Buy Item</button>
             </li>
         </ol>
-        <div class="error">Error: {{ToBuy.errorMessage}}</div>
+        <div ng-if="Buy.items.length==0">Everything is bought</div>
     </div>
 
-    <div id='AlreadyBought' ng-controller='AlreadyBoughtController as AlreadyBought'>
-        <h3>ALREADY BOUGHT</h3>
-        <input type="text" ng-model="AlreadyBought.itemName" placeholder="item name">      
-        <input type="text" ng-model="AlreadyBought.itemQuantity" placeholder="quantity">
-        <button ng-click="AlreadyBought.addItem()">Add Item to AlreadyBought List</button>
+    <div ng-controller='AlreadyBoughtController as Bought'>
+        <h3>ALREADY BOUGHT LIST</h3>
+        
         <ol>
-            <li ng-repeat="item in AlreadyBought.items">
-                {{item.quantity}} of {{item.name}}
-                <button ng-click="AlreadyBought.removeItem($index);"> Remove Item</button>
+            <li ng-repeat="item in Bought.items">
+               Already Bought {{item.itemQuantity}} of {{item.itemName}}
+                
             </li>
         </ol>
-        <div class="error">Error: {{AlreadyBought.errorMessage}}</div>
+        <div ng-if="Bought.items.length==0">Nothing is Bought</div>
     </div>
         
     </body>
 </html>
 <!--
 
-    (function() {
-    'use strict';
     
-    angular.module('ShoppingListCheckOff',[])
-    .controller('ToBuyController',ToBuyController)
-    .controller('AlreadyBoughtController',AlreadyBoughtController)
-    .service('ShoppingListCheckOffService',ShoppingListCheckOffService);
-
-    ToBuyController.$inject=['ShoppingListCheckOffService'];
-    function ToBuyController(ShoppingListCheckOffService){
-
-
-        var ToBuy=this;
-        
-        ToBuy.itemName="";
-        ToBuy.itemQuantity="";
-
-        ToBuy.addItem=function() {
-            try{
-                ShoppingListCheckOffService.addItem(ToBuy.itemName,ToBuy.itemQuantity);
-            }
-            catch(error){
-                ToBuy.errorMessage=error.message;
-            }
-            
-        }
-        ToBuy.removeItem=function(itemIndex) {
-            ShoppingListCheckOffService.removeItem(itemIndex);
-        };
-    }
-
-    AlreadyBoughtController.$inject=['ShoppingListCheckOffService'];
-    function AlreadyBoughtController(ShoppingListCheckOffService){
-        var AlreadyBought=this;
-        
-        AlreadyBought.itemName="";
-        AlreadyBought.itemQuantity="";
-
-        AlreadyBought.addItem=function() {
-            try{
-                ShoppingListCheckOffService.addItem(AlreadyBought.itemName,AlreadyBought.itemQuantity);
-            }
-            catch(error){
-                AlreadyBought.errorMessage=error.message;
-            }
-            
-        }
-        AlreadyBought.removeItem=function(itemIndex) {
-            ShoppingListCheckOffService.removeItem(itemIndex);
-        };
-    }
-
-    function ShoppingListCheckOffService(maxItems){
-        var service=this;
-        var items=[];
-
-        service.addItem=function(itemName,quantity) {
-            
-            if((maxItems===undefined)||(maxItems!==undefined)&&(items.length<maxItems)) {
-                var item={
-                    name:itemName,
-                    quantity:quantity
-                };
-                items.push(item);
-            }
-            else {
-                throw new Error("max items("+maxItems+") reached.");
-            }
-            
-        };
-        service.getItems=function() {
-            return items;
-        }
-        service.removeItem=function(itemIndex){
-            items.splice(itemIndex,1);
-
-        }
-    }
-    
-
-})();
 -->
