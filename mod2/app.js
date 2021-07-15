@@ -34,11 +34,11 @@
     function ShoppingListCheckOffService(){
         var service=this;
         var toBuy=[
-            { itemName: "cookies", itemQuantity: 10 },
-            { itemName: "cokes", itemQuantity: 2 },
-            { itemName: "chips", itemQuantity: 6 },
-            { itemName: "apples", itemQuantity: 4 },
-            { itemName: "bananas", itemQuantity: 7 }
+            { itemName: "cookies", itemQuantity: "10 packets" },
+            { itemName: "cokes", itemQuantity: "2 dozens" },
+            { itemName: "chips", itemQuantity: "6 packets" },
+            { itemName: "apples", itemQuantity: "4 kgs" },
+            { itemName: "bananas", itemQuantity: "7 dozens" }
         ];
 
         var alreadyBoughtItems=[];
