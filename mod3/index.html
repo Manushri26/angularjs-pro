@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<html ng-app='ShoppingListPromiseApp'>
-    <head>
-        <meta charset="utf-8">
-        <script src="angular.min.js"></script>
-        <script src="app.js"></script>
-        <style>body {font-size: 1.2em;}</style>
-        <title>Custom Service</title>
-    </head>
-    <body>
-        <h1>Shopping List with a Promise</h1>
-        <div ng-controller='ShoppingListController as list'>
-            <h3>Shopping List</h3>
-        <input type="text" ng-model="list.itemName" placeholder="item name">
-       
-        <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
-        Boxes
-        <button ng-click="list.addItem()">Add Item to List</button>
-        
-            <ol>
-                <li ng-repeat="item in list.items">
-                    {{item.quantity}} boxes of {{item.name}}
-                    <button ng-click="list.removeItem($index);"> Remove Item</button>
-                </li>
-            </ol>
-        </div>
-    </body>
+<html ng-app='NarrowItDownApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>NARROW IT DOWN </title>
+  </head>
+  <body>
+    <h1>Narrow your choices</h1>
+
+    <div ng-controller='NarrowItDownController as menu'>
+    <div>
+        <input type="text" placeholder="search Item" ng.model="menu.shortName">
+    </div>
+    <button class="btn btn-primary" ng-click="menu.matchedMenuItems(menu.shortName)">Narrow It Down For Me!</button>
+    <found-items found-items="menu.found" on-remove="menu.removeMenuItem(index)" on-empty="menu.message"></found-items>
+    </div>
+
+  </body>
 </html>
